@@ -6,6 +6,9 @@
                 <ui-list-item title="在线编辑器" to="/">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
+                <ui-list-item title="时间戳转换" to="/timestamp">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
                 <ui-list-item title="关于" href="http://about.yunser.com/" target="_blank">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
