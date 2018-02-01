@@ -1,5 +1,5 @@
 <template>
-    <my-page title="时间戳转换">
+    <my-page title="时间戳转换" :page="page">
         <section class="input-box">
             <p>现在：<a id="js_timestamp_now" href="javascript:;">-</a> 控制：<a id="js_timer_start" href="javascript:;"><i
                     class="fa fa-play">播放</i></a> <a id="js_timer_stop" href="javascript:;"><i class="fa fa-stop">停止</i></a>
@@ -20,10 +20,6 @@
                 <input class="form-control result" type="text" v-model="timestamp2" v-if="timestamp2">
             </ui-card>
         </section>
-        <ui-article>
-            <h3>获取当前时间戳</h3>
-            <h3></h3>
-        </ui-article>
     </my-page>
 </template>
 
@@ -52,6 +48,15 @@
 
                 timestamp2: '',
                 time2: '',
+                page: {
+                    menu: [
+                        {
+                            type: 'icon',
+                            icon: 'help',
+                            to: '/timestamp/help'
+                        }
+                    ]
+                }
             }
         },
         mounted() {

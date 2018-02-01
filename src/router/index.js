@@ -4,6 +4,7 @@ import Router from 'vue-router'
 const Home = resolve => require(['@/views/Home'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
 const Timestamp = resolve => require(['@/views/Timestamp'], resolve)
+const TimestampHelp = resolve => require(['@/views/TimestampHelp'], resolve)
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
 Vue.use(Router)
@@ -16,6 +17,10 @@ let routes = [
     {
         path: '/timestamp',
         component: Timestamp
+    },
+    {
+        path: '/timestamp/help',
+        component: TimestampHelp
     },
     {
         path: '/about',
