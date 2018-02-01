@@ -9,6 +9,15 @@
                 <ui-list-item title="时间戳转换" to="/timestamp">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
+                <ui-list-item title="进制转换" to="/hex">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
+                <ui-list-item title="ASCII 码对照表" to="/asc2">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
+                <ui-list-item title="HTML 特殊符号对照表" to="/html/char">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
                 <ui-list-item title="关于" href="http://about.yunser.com/" target="_blank">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>

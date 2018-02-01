@@ -5,6 +5,9 @@ const Home = resolve => require(['@/views/Home'], resolve)
 const About = resolve => require(['@/views/About'], resolve)
 const Timestamp = resolve => require(['@/views/Timestamp'], resolve)
 const TimestampHelp = resolve => require(['@/views/TimestampHelp'], resolve)
+const Hex = resolve => require(['@/views/Hex'], resolve)
+const Asc2 = resolve => require(['@/views/Asc2'], resolve)
+const HtmlChar = resolve => require(['@/views/HtmlChar'], resolve)
 const Error404 = resolve => require(['@/views/error/Error404'], resolve)
 
 Vue.use(Router)
@@ -25,6 +28,18 @@ let routes = [
     {
         path: '/about',
         component: About
+    },
+    {
+        path: '/hex',
+        component: Hex
+    },
+    {
+        path: '/asc2',
+        component: Asc2
+    },
+    {
+        path: '/html/char',
+        component: HtmlChar
     },
     {
         path: '*',
