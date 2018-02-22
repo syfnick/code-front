@@ -6,10 +6,16 @@
                 <ui-list-item title="在线编辑器" to="/">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
+                <ui-list-item title="代码高亮" to="/highlight">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
                 <ui-list-item title="时间戳转换" to="/timestamp">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
                 <ui-list-item title="进制转换" to="/hex">
+                    <ui-icon slot="left" value="grade"/>
+                </ui-list-item>
+                <ui-list-item title="字符串转义" to="/escape">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
                 <ui-list-item title="ASCII 码对照表" to="/asc2">
