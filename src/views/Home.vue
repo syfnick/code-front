@@ -84,6 +84,10 @@ export default {
 
         this.submitTryit()
         this.autodivheight()
+        if (window.intent) {
+            let data = window.intent.data
+            this.editor.setValue(data)
+        }
     },
     methods: {
         autodivheight() {
