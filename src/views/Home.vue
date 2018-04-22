@@ -87,6 +87,7 @@ export default {
         if (window.intent) {
             let data = window.intent.data
             this.editor.setValue(data)
+            this.submitTryit()
         }
     },
     methods: {
