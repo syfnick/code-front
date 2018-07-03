@@ -7,7 +7,9 @@
                         <ui-select-field class="select" v-model="hex1" :maxHeight="400">
                             <ui-menu-item v-for="n in 36" :key="n" :value="n" :title="n + '进制'" />
                         </ui-select-field>
-                        <span class="convert">转</span>
+                        <span class="convert" @click="exchange">
+                            <span class="icon">转</span>
+                        </span>
                         <ui-select-field class="select" v-model="hex2" :maxHeight="400">
                             <ui-menu-item v-for="n in 36" :key="n" :value="n" :title="n + '进制'" />
                         </ui-select-field>
@@ -31,6 +33,7 @@
                 </section>
             </div>
         </div>
+        <keyboard @input="input" @command="command" />
     </my-page>
 </template>
 
@@ -59,19 +62,49 @@
             }
         },
         mounted() {
+            let from = this.$route.query.from
+            if (from) {
+                this.hex1 = parseInt(from)
+            }
+            let to = this.$route.query.to
+            if (to) {
+                this.hex2 = parseInt(to)
+            }
+            let data = this.$route.query.data
+            if (data) {
+                this.num1 = data
+                this.convert()
+            }
         },
         methods: {
-            convert: function () {
+            exchange() {
+                let tmp = this.hex2
+                this.hex2 = this.hex1
+                this.hex1 = tmp
+            },
+            convert() {
                 // 用户输入的转十进制
-                let num = parseFloat(this.num1, this.hex1)
+                let num = parseInt(this.num1, this.hex1)
+                console.log(num)
                 // 再从十进制转其他
                 this.num2 = num.toString(this.hex2)
+            },
+            input(text) {
+                console.log(text)
+                this.num1 += text
+            },
+            command(cmd) {
+                if (cmd === 'delete') {
+                    if (this.num1) {
+                        this.num1 = this.num1.substring(0, this.num1.length - 1)
+                    }
+                }
             }
         }
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
     .select {
         width: 160px;
     }
@@ -81,6 +114,12 @@
     }
     .convert {
         margin: 0 24px;
+        cursor: pointer;
+        .icon {
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 8px;
+        }
     }
     /**/
     .input-box {
