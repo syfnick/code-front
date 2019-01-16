@@ -2,9 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 const Home = resolve => require(['@/views/Home'], resolve)
+const RunCode = resolve => require(['@/views/RunCode'], resolve)
+const Editor = resolve => require(['@/views/Editor'], resolve)
 const Highlight = resolve => require(['@/views/Highlight'], resolve)
 const HighlightHelp = resolve => require(['@/views/HighlightHelp'], resolve)
-const About = resolve => require(['@/views/About'], resolve)
 const Timestamp = resolve => require(['@/views/Timestamp'], resolve)
 const TimestampHelp = resolve => require(['@/views/TimestampHelp'], resolve)
 const Hex = resolve => require(['@/views/Hex'], resolve)
@@ -19,6 +20,14 @@ let routes = [
     {
         path: '/',
         component: Home
+    },
+    {
+        path: '/runcode',
+        component: RunCode
+    },
+    {
+        path: '/editor',
+        component: Editor
     },
     {
         path: '/highlight',
@@ -39,10 +48,6 @@ let routes = [
     {
         path: '/escape',
         component: Escape
-    },
-    {
-        path: '/about',
-        component: About
     },
     {
         path: '/hex',

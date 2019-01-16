@@ -1,30 +1,17 @@
 <template>
     <ui-page :title="title || page.title" :page="page" :backable="backable"  ref="page">
         <div slot="drawer">
-            <ui-appbar title=""></ui-appbar>
+            <div class="header">
+                <img class="logo" src="/static/img/code.svg">
+            </div>
             <ui-list @itemClick="toggle()">
-                <ui-list-item title="在线编辑器" to="/">
+                <ui-list-item title="首页" to="/">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
-                <ui-list-item title="代码高亮" to="/highlight">
+                <ui-list-item title="开发" href="https://dev.yunser.com/" target="_blank">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
-                <ui-list-item title="时间戳转换" to="/timestamp">
-                    <ui-icon slot="left" value="grade"/>
-                </ui-list-item>
-                <ui-list-item title="进制转换" to="/hex">
-                    <ui-icon slot="left" value="grade"/>
-                </ui-list-item>
-                <ui-list-item title="字符串转义" to="/escape">
-                    <ui-icon slot="left" value="grade"/>
-                </ui-list-item>
-                <ui-list-item title="ASCII 码对照表" to="/asc2">
-                    <ui-icon slot="left" value="grade"/>
-                </ui-list-item>
-                <ui-list-item title="HTML 特殊符号对照表" to="/html/char">
-                    <ui-icon slot="left" value="grade"/>
-                </ui-list-item>
-                <ui-list-item title="关于" href="http://about.yunser.com/" target="_blank">
+                <ui-list-item title="关于" href="https://project.yunser.com/products/ed630630f0ca11e89d14178ad465e979" target="_blank">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
             </ui-list>
@@ -72,30 +59,19 @@
 </script>
 
 <style lang="scss" scoped>
-    .ui-page {
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-    }
-    .page-body {
-        min-height: 500px;
-    }
-    .container-main {
-        padding-top: 16px;
-    }
-    .page-content {
-        position: absolute;
-        top: 0;
-        left: 256px;
-        right: 0;
-        bottom: 0;
-    }
-    .page-container {
-        padding: 16px;
-    }
-    .admin-container {
-        padding: 16px;
-    }
+.header {
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+.logo {
+    display: block;
+    width: 80px;
+    margin: 0 auto;
+}
+.ui-position-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
 </style>

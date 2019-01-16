@@ -1,177 +1,332 @@
 <template>
-    <my-page title="在线编辑器">
-        <ui-row gutter>
-            <ui-col width="100" tablet="100" desktop="50">
-                <section>
-                    <div>
-                        <h2 class="section-title">源代码</h2>
-                        <div class="tools">
-                            <ui-raised-button class="btn" label="点击运行" primary @click="submitTryit" />
-                            <ui-switch class="switch" label="实时预览" v-model="realTimePreview" />
-                        </div>
-                    </div>
-                    <div class="card">
-                            <textarea class="form-control"  id="textareaCode" name="textareaCode">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;title&gt;云设在线编辑器(yunser.com)&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;h1&gt;这是标题&lt;/h1&gt;
-&lt;p&gt;这是段落。&lt;/p&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
-                    </div>
-                </section>
-            </ui-col>
-            <ui-col width="100" tablet="100" desktop="50">
-                <section>
-                    <h2 class="section-title">运行结果</h2>
-                    <div class="card">
-                        <div id="iframewrapper"></div>
-                    </div>
-                </section>
-            </ui-col>
-        </ui-row>
+    <my-page title="代码" :page="page">
+        <app-list :data="groups" />
     </my-page>
 </template>
 
 <script>
-    const CodeMirror = window.CodeMirror
-
-export default {
-    data () {
-        return {
-            realTimePreview: false
-        }
-    },
-    mounted() {
-        let realTimePreview = this.$storage.get('realTimePreview')
-        if (realTimePreview) {
-            this.realTimePreview = realTimePreview
-        }
-        let mixedMode = {
-            name: 'htmlmixed',
-            scriptTypes: [
-                {
-                    matches: /\/x-handlebars-template|\/x-mustache/i,
-                    mode: null
-                },
-                {
-                    matches: /(text|application)\/(x-)?vb(a|script)/i,
-                    mode: 'vbscript'
+    export default {
+        data () {
+            return {
+                groups: [
+                    {
+                        name: '工具',
+                        apps: [
+                            {
+                                name: '运行代码',
+                                desc: '',
+                                icon: '/static/img/code.svg',
+                                to: '/runcode'
+                            },
+                            {
+                                name: 'HTML 编辑器',
+                                desc: '',
+                                icon: '/static/img/code.svg',
+                                to: '/editor'
+                            },
+                            {
+                                name: '代码高亮',
+                                desc: '',
+                                icon: '/static/img/code.svg',
+                                to: '/highlight'
+                            },
+                            {
+                                name: '时间戳转换',
+                                desc: '',
+                                icon: '/static/img/time_convert.svg',
+                                to: '/timestamp'
+                            },
+                            {
+                                name: '进制转换',
+                                desc: '',
+                                icon: '/static/img/code.svg',
+                                to: '/number/property'
+                            },
+                            {
+                                name: '字符串转义',
+                                desc: '',
+                                icon: '/static/img/code.svg',
+                                to: '/escape'
+                            },
+                            {
+                                name: 'ASCII 码对照表',
+                                desc: '',
+                                icon: '/static/img/code.svg',
+                                to: '/asc2'
+                            },
+                            {
+                                name: 'HTML 特殊符号',
+                                desc: 'HTML 特殊符号对照表',
+                                icon: '/static/img/code.svg',
+                                to: '/html/char'
+                            }
+                        ]
+                    },
+                    {
+                        name: '编程语言',
+                        apps: [
+                            {
+                                name: 'JSON',
+                                desc: '',
+                                icon: '/static/img/json.svg',
+                                to: 'xxx',
+                                href: 'https://json.yunser.com/',
+                                target: '_blank'
+                            },
+                            {
+                                name: 'XML',
+                                desc: '',
+                                icon: '/static/img/xml.svg',
+                                to: 'xxx',
+                                href: 'https://xml.yunser.com/',
+                                target: '_blank'
+                            },
+                            {
+                                name: 'HTML',
+                                desc: '',
+                                icon: '/static/img/html.svg',
+                                to: 'xxx',
+                                href: 'https://html.yunser.com/',
+                                target: '_blank'
+                            },
+                            {
+                                name: 'CSS',
+                                desc: '',
+                                icon: '/static/img/css3.svg',
+                                to: 'xxx',
+                                href: 'https://css.yunser.com/',
+                                target: '_blank'
+                            },
+                            {
+                                name: 'SQL',
+                                desc: '',
+                                icon: '/static/img/sql.svg',
+                                to: 'xxx',
+                                href: 'https://sql.yunser.com/',
+                                target: '_blank'
+                            }
+                        ]
+                    },
+                    {
+                        name: '前端',
+                        apps: [
+                            {
+                                name: 'CSS3 动画生成',
+                                desc: '可视化生成简单的 CSS3 动画代码。',
+                                icon: '/static/img/css3.svg',
+                                to: 'xxx',
+                                href: 'https://animation.yunser.com/',
+                                target: '_blank'
+                            },
+                            {
+                                href: 'http://tool2.yunser.com/css/sprite',
+                                to: 'xxx',
+                                icon: '/static/img/build.svg',
+                                name: '雪碧图生成工具',
+                                desc: '',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'https://clippath.yunser.com/',
+                                to: 'xxx',
+                                icon: '/static/img/build.svg',
+                                name: 'clip_path 生成器',
+                                desc: '',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'http://runcode.yunser.com/editor',
+                                to: 'xxx',
+                                icon: '/static/img/runcode.svg',
+                                name: 'RunCode',
+                                desc: '调试 Javascript',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'https://bezier.yunser.com/',
+                                to: 'xxx',
+                                icon: '/static/img/bezier.svg',
+                                name: '贝塞尔曲线',
+                                desc: 'canvas 贝塞尔曲代码生成',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'http://tool2.yunser.com/bezier/anim',
+                                to: 'xxx',
+                                icon: '/static/img/bezier.svg',
+                                name: '贝塞尔曲线动画',
+                                desc: '贝塞尔曲线形成过程动画',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'http://tool2.yunser.com/css3/bezier',
+                                to: 'xxx',
+                                icon: '/static/img/bezier.svg',
+                                name: 'CSS3贝塞尔曲线',
+                                desc: '',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'https://svgtool.yunser.com/',
+                                to: 'xxx',
+                                icon: '/static/img/svg.svg',
+                                name: 'SVG 转 Canvas',
+                                desc: '',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'https://code.yunser.com/html/char',
+                                to: 'xxx',
+                                icon: '/static/img/build.svg',
+                                name: 'HTML特殊符号',
+                                desc: 'HTML特殊符号对照表',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'https://code.yunser.com/asc2',
+                                to: 'xxx',
+                                icon: '/static/img/asc.svg',
+                                name: 'ASCII码对照表',
+                                desc: '',
+                                tags: ['开发'],
+                                target: '_blank'
+                            },
+                            {
+                                href: 'https://animation.yunser.com/animate',
+                                to: 'xxx',
+                                icon: '/static/img/animation.svg',
+                                name: 'css3动画库',
+                                desc: '',
+                                tags: ['开发'],
+                                target: '_blank'
+                            }
+                        ]
+                    }
+                ],
+                page: {
+                    menu: [
+                        {
+                            type: 'icon',
+                            icon: 'search',
+                            href: 'https://search.yunser.com?utm_source=code',
+                            target: '_blank',
+                            title: '搜索'
+                        },
+                        {
+                            type: 'icon',
+                            icon: 'apps',
+                            href: 'https://app.yunser.com?utm_source=code',
+                            target: '_blank',
+                            title: '应用'
+                        }
+                    ]
                 }
-            ]
-        }
-        this.editor = CodeMirror.fromTextArea(document.getElementById('textareaCode'), {
-            mode: mixedMode,
-            selectionPointer: true,
-            lineNumbers: false,
-            matchBrackets: true,
-            indentUnit: 4,
-            indentWithTabs: true
-        })
-        this.editor.on('change', (instance, changeObj) => {
-            console.log('change')
-            if (this.realTimePreview) {
-                this.submitTryit()
             }
-        })
-        window.addEventListener('resize', this.autodivheight)
-
-        this.submitTryit()
-        this.autodivheight()
-        if (window.intent) {
-            let data = window.intent.data
-            this.editor.setValue(data)
-            this.submitTryit()
-        }
-    },
-    methods: {
-        autodivheight() {
-            let winHeight = 0
-            if (window.innerHeight) {
-                winHeight = window.innerHeight
-            } else if ((document.body) && (document.body.clientHeight)) {
-                winHeight = document.body.clientHeight
-            }
-            // 通过深入Document内部对body进行检测，获取浏览器窗口高度
-            if (document.documentElement && document.documentElement.clientHeight) {
-                winHeight = document.documentElement.clientHeight
-            }
-            let height = winHeight * 0.68
-            this.editor.setSize('100%', height)
-            document.getElementById('iframeResult').style.height = height + 'px'
         },
-        submitTryit() {
-            let text = this.editor.getValue()
-            let patternHtml = /<html[^>]*>((.|[\n\r])*)<\/html>/im
-            let patternHead = /<head[^>]*>((.|[\n\r])*)<\/head>/im
-            let arrayMatchesHead = patternHead.exec(text)
-            let patternBody = /<body[^>]*>((.|[\n\r])*)<\/body>/im
-
-            let arrayMatchesBody = patternBody.exec(text)
-            let basepathFlag = 1
-            let basepath = ''
-            if (basepathFlag) {
-                basepath = '<base href="//www.yunser.com/try/demo_source/" target="_blank">'
+        computed: {
+        },
+        mounted() {
+        },
+        methods: {
+            init() {
+            },
+            fileChange(e) {
+            },
+            sizeStr: function (size) {
             }
-            if (arrayMatchesHead) {
-                text = text.replace('<head>', '<head>' + basepath)
-            } else if (patternHtml) {
-                text = text.replace('<html>', '<head>' + basepath + '</head>')
-            } else if (arrayMatchesBody) {
-                text = text.replace('<body>', '<body>' + basepath)
-            } else {
-                text = basepath + text
-            }
-            let ifr = document.createElement('iframe')
-            ifr.setAttribute('frameborder', '0')
-            ifr.setAttribute('id', 'iframeResult')
-            document.getElementById('iframewrapper').innerHTML = ''
-            document.getElementById('iframewrapper').appendChild(ifr)
-
-            let ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument
-            ifrw.document.open()
-            ifrw.document.write(text)
-            ifrw.document.close()
-            this.autodivheight()
         }
-    },
-    watch: {
-        realTimePreview() {
-            console.log('change')
-            this.$storage.set('realTimePreview', this.realTimePreview)
+    }
+</script>
+
+<style lang="scss" scoped>
+@import '../scss/var';
+
+.tool-list {
+    max-width: 840px;
+    margin: 0 auto;
+    @include clearfix;
+    .list-item {
+        position: relative;
+        float: left;
+        width: 260px;
+        height: 96px;
+        padding: 8px;
+        margin: 2px 16px 16px 2px;
+        background-color: #fff;
+        //border: 1px solid #ccc;
+        &:hover {
+            background-color: #f9f9f9;
+            // box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+            //border-color: #09c;
+            .icon {
+                display: block;
+            }
+        }
+        &.active {
+            border: 1px solid #f00;
+        }
+    }
+    a {
+        display: block;
+        height: 100%;
+        color: #666;
+    }
+    .img {
+        float: left;
+        width: 72px;
+        height: 72px;
+        margin-right: 16px;
+        background-color: #fff;
+        border: 1px solid #e9e9e9;
+        border-radius: 8px;
+    }
+    .info {
+        float: left;
+    }
+    .text {
+        font-size: 18px;
+        color: #000;
+    }
+    .header {
+        overflow: hidden;
+    }
+    .desc {
+        max-width: 150px;
+        margin-top: 8px;
+    }
+    .icon-heart {
+        display: none;
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        &:hover {
+            color: #f00;
+        }
+    }
+    .icon-close {
+        display: none;
+        position: absolute;
+        top: 32px;
+        right: 8px;
+        &:hover {
+            color: #f00;
         }
     }
 }
-</script>
-
-<style scoped>
-    .section-title {
-        display: inline-block;
-        font-size: 24px;
-        line-height: 36px;
-        margin-bottom: 16px;
+@media all and (max-width: 400px){
+    .tool-list {
+        .list-item {
+            width: 100%;
+            margin-right: 0;
+        }
     }
-    .card {
-        padding: 16px;
-        margin-bottom: 16px;
-        background-color: #fff;
-        box-shadow: 0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
-    }
-    .tools {
-        float: right;
-    }
-    .btn {
-        display: inline-block;
-        position: relative;
-        top: -4px;
-        margin-left: 16px;
-        margin-bottom: 16px;
-        margin-right: 16px;
-    }
+}
 </style>

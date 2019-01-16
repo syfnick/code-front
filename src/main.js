@@ -4,10 +4,12 @@ import router from './router'
 import storage from '@/util/storage'
 import ui from './components/index'
 import './scss/main.scss'
+import http from '@/util/http'
 
 Vue.config.productionTip = false
 
 Vue.prototype.$storage = storage
+Vue.prototype.$http = http
 
 Vue.use(ui)
 
