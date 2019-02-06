@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const Home = resolve => require(['@/views/Home'], resolve)
 const RunCode = resolve => require(['@/views/RunCode'], resolve)
+const RunCodeDetail = resolve => require(['@/views/RunCodeDetail'], resolve)
 const Editor = resolve => require(['@/views/Editor'], resolve)
 const Highlight = resolve => require(['@/views/Highlight'], resolve)
 const HighlightHelp = resolve => require(['@/views/HighlightHelp'], resolve)
@@ -24,6 +25,10 @@ let routes = [
     {
         path: '/runcode',
         component: RunCode
+    },
+    {
+        path: '/codes/:code/run',
+        component: RunCodeDetail
     },
     {
         path: '/editor',
