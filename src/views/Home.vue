@@ -40,7 +40,7 @@
                                 name: '进制转换',
                                 desc: '',
                                 icon: '/static/img/code.svg',
-                                to: '/number/property'
+                                to: '/hex'
                             },
                             {
                                 name: '字符串转义',

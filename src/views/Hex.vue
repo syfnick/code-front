@@ -25,7 +25,8 @@
                         <!--</div>-->
                         <!--<textarea class="form-control" v-model="num2" rows="4" placeholder="转换结果"></textarea>-->
                     </div>
-                    <div>{{ num2 }}</div>
+                    <result :text="num2" :copyable="true" />
+                    <!-- <div>{{ num2 }}</div> -->
                 </section>
             </div>
             <div class="col-sm-4">
@@ -42,7 +43,7 @@
         data () {
             return {
                 hex1: 10,
-                hex2: 8,
+                hex2: 16,
                 num1: '',
                 num2: '',
                 options: [
@@ -84,7 +85,7 @@
             },
             convert() {
                 // 用户输入的转十进制
-                let num = parseInt(this.num1, this.hex1)
+                let num = parseFloat(this.num1, this.hex1)
                 console.log(num)
                 // 再从十进制转其他
                 this.num2 = num.toString(this.hex2)

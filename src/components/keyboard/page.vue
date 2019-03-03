@@ -27,7 +27,7 @@
                     <div class="grid" @click="input('f')">f</div>
                 </div>
                 <div class="my-row">
-                    <div class="grid"></div>
+                    <div class="grid" @click="input('.')">.</div>
                     <div class="grid" @click="input('0')">0</div>
                     <div class="grid" @click="command('delete')">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAjElEQVR42mNgGAWDGRgA8Xwg3k8iXg/EAYQMFwDi+0D8nwIsgM+CfqiiAjJ83gDV64BLgQNUwX4sQYYrKIm2ABY074FYAUk8AappPpp6bOJ4LcAVNAlIYTsfjxheC3AFDTZL9uMwHKcFuIIGnyXYDB84C2geRHSJZLokU5pnNLoUFXQp7GheXI8C+gEASbuKWYTu8WgAAAAASUVORK5CYII=" width="24" height="24" class="gwt-Image" alt="Backspace">
