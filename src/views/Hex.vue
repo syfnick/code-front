@@ -5,13 +5,13 @@
                 <section class="input-box">
                     <div class="type">
                         <ui-select-field class="select" v-model="hex1" :maxHeight="400">
-                            <ui-menu-item v-for="n in 36" :key="n" :value="n" :title="n + '进制'" />
+                            <ui-menu-item v-for="n in 35" :key="n + 1" :value="n+1" :title="(n + 1) + '进制'" />
                         </ui-select-field>
                         <span class="convert" @click="exchange">
                             <span class="icon">转</span>
                         </span>
                         <ui-select-field class="select" v-model="hex2" :maxHeight="400">
-                            <ui-menu-item v-for="n in 36" :key="n" :value="n" :title="n + '进制'" />
+                            <ui-menu-item v-for="n in 36" :key="n + 1" :value="n + 1" :title="(n + 1) + '进制'" />
                         </ui-select-field>
                     </div>
                     <div>
@@ -42,23 +42,23 @@
     export default {
         data () {
             return {
-                hex1: 10,
-                hex2: 16,
-                num1: '',
+                hex1: 2,
+                hex2: 10,
+                num1: '100',
                 num2: '',
                 options: [
-                    { text: '2 进制', value: '2' },
-                    { text: '3 进制', value: '3' },
-                    { text: '4 进制', value: '4' },
-                    { text: '5 进制', value: '5' },
-                    { text: '6 进制', value: '6' },
-                    { text: '7 进制', value: '7' },
-                    { text: '8 进制', value: '8' },
-                    { text: '9 进制', value: '9' },
-                    { text: '10 进制', value: '10' },
-                    { text: '11 进制', value: '11' },
-                    { text: '12 进制', value: '12' },
-                    { text: '2 进制', value: '12' }
+                    // { text: '2 进制', value: '2' },
+                    // { text: '3 进制', value: '3' },
+                    // { text: '4 进制', value: '4' },
+                    // { text: '5 进制', value: '5' },
+                    // { text: '6 进制', value: '6' },
+                    // { text: '7 进制', value: '7' },
+                    // { text: '8 进制', value: '8' },
+                    // { text: '9 进制', value: '9' },
+                    // { text: '10 进制', value: '10' },
+                    // { text: '11 进制', value: '11' },
+                    // { text: '12 进制', value: '12' },
+                    // { text: '2 进制', value: '12' }
                 ]
             }
         },
@@ -85,10 +85,20 @@
             },
             convert() {
                 // 用户输入的转十进制
-                let num = parseFloat(this.num1, this.hex1)
-                console.log(num)
-                // 再从十进制转其他
-                this.num2 = num.toString(this.hex2)
+                if (this.num1.includes('.')) {
+                    console.log('包含点')
+                    console.log(this.num1, this.hex1)
+                    let num = parseFloat(this.num1, this.hex1)
+                    console.log(num)
+                    // 再从十进制转其他
+                    this.num2 = num.toString(this.hex2)
+                } else {
+                    console.log(this.num1, this.hex1)
+                    let num = parseInt(this.num1, this.hex1)
+                    console.log(num)
+                    // 再从十进制转其他
+                    this.num2 = num.toString(this.hex2)
+                }
             },
             input(text) {
                 console.log(text)
