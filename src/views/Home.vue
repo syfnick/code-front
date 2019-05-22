@@ -1,6 +1,8 @@
 <template>
     <my-page title="代码" :page="page">
-        <app-list :data="groups" />
+        <div class="common-container container">
+            <app-list :data="groups" />
+        </div>
     </my-page>
 </template>
 
@@ -35,12 +37,6 @@
                                 desc: '',
                                 icon: '/static/img/time_convert.svg',
                                 to: '/timestamp'
-                            },
-                            {
-                                name: '进制转换',
-                                desc: '',
-                                icon: '/static/img/code.svg',
-                                to: '/hex'
                             },
                             {
                                 name: '字符串转义',

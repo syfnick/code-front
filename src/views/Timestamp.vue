@@ -1,25 +1,27 @@
 <template>
     <my-page title="时间戳转换" :page="page">
-        <section class="input-box">
-            <p>现在：<a id="js_timestamp_now" href="javascript:;">-</a> 控制：<a id="js_timer_start" href="javascript:;"><i
-                    class="fa fa-play">播放</i></a> <a id="js_timer_stop" href="javascript:;"><i class="fa fa-stop">停止</i></a>
-            </p>
-            <ui-card class="card">
-                <ui-text-field v-model="timestamp" label="时间戳" />
-                <div>
-                    <ui-raised-button class="btn" label="转换" primary @click="convert" />
-                </div>
-                <input class="form-control result" type="text" v-model="time" v-if="time">
-            </ui-card>
-            <ui-card class="card">
-                <ui-text-field v-model="time2" label="时间" />
-                <div>
-                    <ui-raised-button class="btn" label="转换" primary @click="convert2" />
-                </div>
-                <!--<button class="btn btn-primary" type="button" @click="convert2">转换</button>-->
-                <input class="form-control result" type="text" v-model="timestamp2" v-if="timestamp2">
-            </ui-card>
-        </section>
+        <div class="common-container container">
+            <section class="input-box">
+                <p>现在：<a id="js_timestamp_now" href="javascript:;">-</a> 控制：<a id="js_timer_start" href="javascript:;"><i
+                        class="fa fa-play">播放</i></a> <a id="js_timer_stop" href="javascript:;"><i class="fa fa-stop">停止</i></a>
+                </p>
+                <ui-card class="card">
+                    <ui-text-field v-model="timestamp" label="时间戳" />
+                    <div>
+                        <ui-raised-button class="btn" label="转换" primary @click="convert" />
+                    </div>
+                    <input class="form-control result" type="text" v-model="time" v-if="time">
+                </ui-card>
+                <ui-card class="card">
+                    <ui-text-field v-model="time2" label="时间" />
+                    <div>
+                        <ui-raised-button class="btn" label="转换" primary @click="convert2" />
+                    </div>
+                    <!--<button class="btn btn-primary" type="button" @click="convert2">转换</button>-->
+                    <input class="form-control result" type="text" v-model="timestamp2" v-if="timestamp2">
+                </ui-card>
+            </section>
+        </div>
     </my-page>
 </template>
 
@@ -54,7 +56,14 @@
                             type: 'icon',
                             icon: 'help',
                             to: '/timestamp/help'
-                        }
+                        },
+                        {
+                            type: 'icon',
+                            icon: 'info',
+                            href: 'https://project.yunser.com/products/13a88f8058f011e982887f5221e49d12',
+                            target: '_blank',
+                            title: '帮助'
+                        },
                     ]
                 }
             }

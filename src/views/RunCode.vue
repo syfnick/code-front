@@ -1,6 +1,6 @@
 <template>
     <my-page title="运行代码" :page="page">
-        <div class="container">
+        <div class="common-container container">
             <!-- <h2 class="group-title">其他</h2> -->
             <ul class="code-list">
                 <li class="item" v-for="item in codes" @click="viewItem(item)">
@@ -172,7 +172,6 @@ export default {
 <style lang="scss" scoped>
     .container {
         max-width: 800px;
-        margin: 0 auto;
     }
     .group-title {
         margin: 16px 0;

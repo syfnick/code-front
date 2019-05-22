@@ -1,59 +1,61 @@
 <template>
     <my-page :title="title" :page="page" backable>
-        <ui-row gutter>
-            <ui-col width="100" tablet="100" desktop="50">
-                <section>
-                    <div>
-                        <h2 class="section-title">源代码</h2>
-                        <div class="tools">
-                            <!-- <ui-select-field v-model="lang" label="" :maxHeight="500">
-                                <ui-menu-item value="python2.7" title="Python 2.7"/>
-                                <ui-menu-item value="python3.6" title="Python 3.6.3"/>
-                                <ui-menu-item value="java8" title="Java 1.8.0"/>
-                                <ui-menu-item value="java11" title="Java 11.0.1"/>
-                                <ui-menu-item value="c" title="C"/>
-                                <ui-menu-item value="cpp" title="C++"/>
-                                <ui-menu-item value="cpp11" title="C++ 11"/>
-                                <ui-menu-item value="r" title="R"/>
-                                <ui-menu-item value="golang" title="Golang 1.11.2"/>
-                                <ui-menu-item value="nodejs" title="Node.js 8.9"/>
-                                <ui-menu-item value="php54" title="PHP 5.4.16"/>
-                                <ui-menu-item value="php72" title="PHP 7.2.0"/>
-                                <ui-menu-item value="perl" title="Perl 5.16.3"/>
-                                <ui-menu-item value="lisp" title="Lisp"/>
-                                <ui-menu-item value="scala" title="Scala 2.12.4"/>
-                                <ui-menu-item value="bash" title="Bash"/>
-                                <ui-menu-item value="ruby20" title="Ruby 2.0.0"/>
-                                <ui-menu-item value="rust" title="Rust 1.31.0"/>
-                                <ui-menu-item value="typescript" title="TypeScript 3.1.6"/>
-                                <ui-menu-item value="csharp" title="C#"/>
-                                <ui-menu-item value="lua" title="Lua 5.3.0"/>
-                                <ui-menu-item value="less" title="Less 458"/>
-                                <ui-menu-item value="sass" title="Sass 3.7.2"/>
-                                <ui-menu-item value="stylus" title="Stylus 0.54.5"/>
-                            </ui-select-field> -->
-                            <ui-raised-button class="btn" label="运行" primary @click="submitTryit" />
-                        </div>
-                    </div>
-                    <div class="card">
-                            <textarea class="form-control"  id="textareaCode" name="textareaCode"></textarea>
-                    </div>
-                </section>
-            </ui-col>
-            <ui-col width="100" tablet="100" desktop="50">
-                <section>
-                    <h2 class="section-title">运行结果</h2>
-                    <div id="result" class="card">
-                        <div class="loading-box" v-if="loading">
-                            <div class="ui-loading">
-                                <ui-circular-progress :size="24"/>
+        <div class="common-container container">
+            <ui-row gutter>
+                <ui-col width="100" tablet="100" desktop="50">
+                    <section>
+                        <div>
+                            <h2 class="section-title">源代码</h2>
+                            <div class="tools">
+                                <!-- <ui-select-field v-model="lang" label="" :maxHeight="500">
+                                    <ui-menu-item value="python2.7" title="Python 2.7"/>
+                                    <ui-menu-item value="python3.6" title="Python 3.6.3"/>
+                                    <ui-menu-item value="java8" title="Java 1.8.0"/>
+                                    <ui-menu-item value="java11" title="Java 11.0.1"/>
+                                    <ui-menu-item value="c" title="C"/>
+                                    <ui-menu-item value="cpp" title="C++"/>
+                                    <ui-menu-item value="cpp11" title="C++ 11"/>
+                                    <ui-menu-item value="r" title="R"/>
+                                    <ui-menu-item value="golang" title="Golang 1.11.2"/>
+                                    <ui-menu-item value="nodejs" title="Node.js 8.9"/>
+                                    <ui-menu-item value="php54" title="PHP 5.4.16"/>
+                                    <ui-menu-item value="php72" title="PHP 7.2.0"/>
+                                    <ui-menu-item value="perl" title="Perl 5.16.3"/>
+                                    <ui-menu-item value="lisp" title="Lisp"/>
+                                    <ui-menu-item value="scala" title="Scala 2.12.4"/>
+                                    <ui-menu-item value="bash" title="Bash"/>
+                                    <ui-menu-item value="ruby20" title="Ruby 2.0.0"/>
+                                    <ui-menu-item value="rust" title="Rust 1.31.0"/>
+                                    <ui-menu-item value="typescript" title="TypeScript 3.1.6"/>
+                                    <ui-menu-item value="csharp" title="C#"/>
+                                    <ui-menu-item value="lua" title="Lua 5.3.0"/>
+                                    <ui-menu-item value="less" title="Less 458"/>
+                                    <ui-menu-item value="sass" title="Sass 3.7.2"/>
+                                    <ui-menu-item value="stylus" title="Stylus 0.54.5"/>
+                                </ui-select-field> -->
+                                <ui-raised-button class="btn" label="运行" primary @click="submitTryit" />
                             </div>
                         </div>
-                        <pre v-html="result" v-if="result"></pre>
-                    </div>
-                </section>
-            </ui-col>
-        </ui-row>
+                        <div class="card">
+                                <textarea class="form-control"  id="textareaCode" name="textareaCode"></textarea>
+                        </div>
+                    </section>
+                </ui-col>
+                <ui-col width="100" tablet="100" desktop="50">
+                    <section>
+                        <h2 class="section-title">运行结果</h2>
+                        <div id="result" class="card">
+                            <div class="loading-box" v-if="loading">
+                                <div class="ui-loading">
+                                    <ui-circular-progress :size="24"/>
+                                </div>
+                            </div>
+                            <pre v-html="result" v-if="result"></pre>
+                        </div>
+                    </section>
+                </ui-col>
+            </ui-row>
+        </div>
     </my-page>
 </template>
 

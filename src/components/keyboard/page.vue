@@ -66,9 +66,13 @@
 
 <style lang="scss" scoped>
     .keyboard-icon {
-        position: absolute;
-        left: 16px;
+        // position: absolute;
+        // left: 16px;
+        // bottom: 16px;
+        position: fixed;
+        right: 16px;
         bottom: 16px;
+        
         color: #999;
         font-size: 32px;
         cursor: pointer;

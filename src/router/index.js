@@ -9,7 +9,6 @@ const Highlight = resolve => require(['@/views/Highlight'], resolve)
 const HighlightHelp = resolve => require(['@/views/HighlightHelp'], resolve)
 const Timestamp = resolve => require(['@/views/Timestamp'], resolve)
 const TimestampHelp = resolve => require(['@/views/TimestampHelp'], resolve)
-const Hex = resolve => require(['@/views/Hex'], resolve)
 const Asc2 = resolve => require(['@/views/Asc2'], resolve)
 const HtmlChar = resolve => require(['@/views/HtmlChar'], resolve)
 const Escape = resolve => require(['@/views/Escape'], resolve)
@@ -53,10 +52,6 @@ let routes = [
     {
         path: '/escape',
         component: Escape
-    },
-    {
-        path: '/hex',
-        component: Hex
     },
     {
         path: '/asc2',

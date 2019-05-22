@@ -1,12 +1,14 @@
 <template>
     <my-page title="字符串转义">
-        <ui-text-field v-model="text" hintText="输入字符串" />
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="转义" @click="escape" />
-            <ui-raised-button class="btn" label="反转义" @click="escape2" />
-        </div>
-        <div v-if="result">
-            {{ result }}
+        <div class="common-container container">
+            <ui-text-field v-model="text" hintText="输入字符串" />
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="转义" @click="escape" />
+                <ui-raised-button class="btn" label="反转义" @click="escape2" />
+            </div>
+            <div v-if="result">
+                {{ result }}
+            </div>
         </div>
     </my-page>
 </template>

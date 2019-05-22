@@ -1,41 +1,43 @@
 <template>
     <my-page title="在线编辑器">
-        <ui-row gutter>
-            <ui-col width="100" tablet="100" desktop="50">
-                <section>
-                    <div>
-                        <h2 class="section-title">源代码</h2>
-                        <div class="tools">
-                            <ui-raised-button class="btn" label="点击运行" primary @click="submitTryit" />
-                            <ui-switch class="switch" label="实时预览" v-model="realTimePreview" />
+        <div class="common-container container">
+            <ui-row gutter>
+                <ui-col width="100" tablet="100" desktop="50">
+                    <section>
+                        <div>
+                            <h2 class="section-title">源代码</h2>
+                            <div class="tools">
+                                <ui-raised-button class="btn" label="点击运行" primary @click="submitTryit" />
+                                <ui-switch class="switch" label="实时预览" v-model="realTimePreview" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="card">
-                            <textarea class="form-control"  id="textareaCode" name="textareaCode">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;meta charset=&quot;utf-8&quot;&gt;
-&lt;title&gt;云设在线编辑器(yunser.com)&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
+                        <div class="card">
+                                <textarea class="form-control"  id="textareaCode" name="textareaCode">&lt;!DOCTYPE html&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;云设在线编辑器(yunser.com)&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
 
-&lt;h1&gt;这是标题&lt;/h1&gt;
-&lt;p&gt;这是段落。&lt;/p&gt;
+    &lt;h1&gt;这是标题&lt;/h1&gt;
+    &lt;p&gt;这是段落。&lt;/p&gt;
 
-&lt;/body&gt;
-&lt;/html&gt;</textarea>
-                    </div>
-                </section>
-            </ui-col>
-            <ui-col width="100" tablet="100" desktop="50">
-                <section>
-                    <h2 class="section-title">运行结果</h2>
-                    <div class="card">
-                        <div id="iframewrapper"></div>
-                    </div>
-                </section>
-            </ui-col>
-        </ui-row>
+    &lt;/body&gt;
+    &lt;/html&gt;</textarea>
+                        </div>
+                    </section>
+                </ui-col>
+                <ui-col width="100" tablet="100" desktop="50">
+                    <section>
+                        <h2 class="section-title">运行结果</h2>
+                        <div class="card">
+                            <div id="iframewrapper"></div>
+                        </div>
+                    </section>
+                </ui-col>
+            </ui-row>
+        </div>
     </my-page>
 </template>
 
@@ -151,6 +153,9 @@ export default {
 </script>
 
 <style scoped>
+    .container {
+        max-width: 1200px;
+    }
     .section-title {
         display: inline-block;
         font-size: 24px;
